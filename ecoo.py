@@ -50,7 +50,13 @@ class River(list):
         #
         # return new_river
         new_river = [[] for i in range(self.size)]
-
+        print(self)
+        moves = [-1, 0, 1]
+        for i in range(self.size):
+            a = random.choice(moves)
+            print(a, i, "what happ: ", new_river[i % self.size + a], (self[i][0]))
+            new_river[i%self.size + a].append(self[i][0])
+            #print(a, new_river)
         return new_river
 
 
