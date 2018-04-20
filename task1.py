@@ -1,5 +1,14 @@
-from ecoo import River, Ecosystem, Bear, Fish
+from ecoo import River, Ecosystem
 
+
+class Bear:
+    def __str__(self):
+        return type(self).__name__
+
+
+class Fish:
+    def __str__(self):
+        return type(self).__name__
 
 class River1(River):
     CHOICES = [str(Bear()), str(Fish()), None]
@@ -19,8 +28,3 @@ class River1(River):
         elif animal1 != animal2:
             return [str(Bear())]
 
-
-river = River1()
-print(river)
-# print(river.move())
-print(river.act())

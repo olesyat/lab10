@@ -12,25 +12,26 @@ class Ecosystem:
 class Animal:
     def __init__(self):
         self._power = random.randint(1, 10)
-        self._age = random.randint(1, 10)
         self._sex = random.choice([True, False])
-        self._birth = self.KIDS
+        # використовується тільки в task3.py
+        # self._age = random.randint(1, 10)
+        # self._birth = self.KIDS
 
     def __str__(self):
         return type(self).__name__
 
-
-class Bear(Animal):
-    KIDS = 2
-
-
-class Fish(Animal):
-    KIDS = 7
-
-
-class Otter(Animal):
-    KIDS = 3
-
+#
+# class Bear(Animal):
+#     KIDS = 2
+#
+#
+# class Fish(Animal):
+#     KIDS = 7
+#
+#
+# class Otter(Animal):
+#     KIDS = 3
+#
 
 class River(list):
     def __init__(self):
@@ -79,7 +80,6 @@ class River(list):
             for i in range(1, len(lst)):
                 lst[0] = self.fight(lst[0], lst[i])
             return lst[0]
-
 
 # class River_3(River):
 #     CHOICES = [str(Bear()), str(Fish()), str(Otter()), None]
