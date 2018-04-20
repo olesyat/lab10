@@ -69,8 +69,8 @@ class River(list):
         for i in range(10):
             moved = self.move()
             print("moved: ", moved)
-            for i in range(len(moved)):
-                self[i] = self.interaction(moved[i])
+            for j in range(len(moved)):
+                self[j] = self.interaction(moved[j])
             return self
 
     def interaction(self, lst):
