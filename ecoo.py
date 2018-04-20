@@ -3,9 +3,10 @@ import copy
 
 
 class Ecosystem:
+    BUFFER = []
+
     def __init__(self, river):
         self.river = river
-
 
 
 class Animal:
@@ -18,15 +19,17 @@ class Animal:
     def __str__(self):
         return type(self).__name__
 
+
 class Bear(Animal):
     KIDS = 2
+
 
 class Fish(Animal):
     KIDS = 7
 
+
 class Otter(Animal):
     KIDS = 3
-
 
 
 class River(list):
@@ -50,24 +53,37 @@ class River(list):
         #
         # return new_river
         new_river = [[] for i in range(self.size)]
-        print(self)
+        # print(self)
         moves = [-1, 0, 1]
         for i in range(self.size):
             a = random.choice(moves)
-            print(a, i, "what happ: ", new_river[(i + a) % self.size], (self[i][0]))
+            # print(a, i, "what happ: ", new_river[(i + a) % self.size],
+            # (self[i][0]))
             new_river[(i + a) % self.size].append(self[i][0])
-            #print(a, new_river)
+            # print(a, new_river)
         self = new_river
         return new_river
 
+    def act(self):
+        for i in range(10):
+            moved = self.move()
+            print("moved: ", moved)
+            for i in range(len(moved)):
+                self[i] = self.interaction(moved[i])
+            return self
 
-class River_1(River):
-    CHOICES = [str(Bear()), str(Fish()), None]
+    def interaction(self, lst):
+        if len(lst) < 2:
+            return lst
+        else:
+            for i in range(1, len(lst)):
+                lst[0] = self.fight(lst[0], lst[i])
+            return lst[0]
 
 
-class River_3(River):
-    CHOICES = [str(Bear()), str(Fish()), str(Otter()), None]
-
-
-a = River_1()
-print(a.move())
+# class River_3(River):
+#     CHOICES = [str(Bear()), str(Fish()), str(Otter()), None]
+# #
+#
+# a = River_1()
+# print(a.move())
