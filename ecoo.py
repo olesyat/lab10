@@ -82,5 +82,4 @@ class River1(River):
             return [str(Bear())]
 
 
-a = Ecosystem(River1())
-a.start_stimulation()
+
