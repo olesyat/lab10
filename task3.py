@@ -1,33 +1,11 @@
-from ecoo import River, Ecosystem, Animal
-import random
-
-
-class Bear(Animal):
-    def __init__(self):
-        super().__init__()
-        self._age = random.randint(1, 10)
-        self._birth = 2
-
-
-class Fish(Animal):
-    def __init__(self):
-        super().__init__()
-        self._age = random.randint(1, 5)
-        self._birth = 7
-
-
-class Otter(Animal):
-    def __init__(self):
-        super().__init__()
-        self._age = random.randint(1, 12)
-        self._birth = 3
+from ecoo import River, Ecosystem, Bear, Fish, Otter
 
 
 class River3(River):
     CHOICES = ['Bear', 'Fish', 'Otter', None]
 
     def fight(self, animal1, animal2):
-        if str(animal1) == str(animal2):
+        if type(animal1) == type(animal2):
             if animal1._sex != animal2._sex:
                 Ecosystem.BUFFER.append(animal2)
                 if str(animal2) == 'Bear':
@@ -37,7 +15,7 @@ class River3(River):
                 if str(animal2) == 'Otter':
                     new_animal = Otter()
                 for i in range(animal2._birth):
-                    Ecosystem.BUFFER.append()
+                    Ecosystem.BUFFER.append(new_animal)
                 return [animal1]
             else:
                 if animal1._power == animal2._power:

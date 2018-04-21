@@ -30,10 +30,25 @@ class Animal:
         return type(self).__name__
 
 class Bear(Animal):
-    pass
+    def __init__(self):
+        super().__init__()
+        self._age = random.randint(1, 10)
+        self._birth = 2
+
 
 class Fish(Animal):
-    pass
+    def __init__(self):
+        super().__init__()
+        self._age = random.randint(1, 5)
+        self._birth = 7
+
+
+class Otter(Animal):
+    def __init__(self):
+        super().__init__()
+        self._age = random.randint(1, 12)
+        self._birth = 3
+
 
 class River(list):
     def __init__(self):
@@ -47,7 +62,7 @@ class River(list):
                 elif animal == 'Fish':
                     self.append([Fish()])
                 elif animal == 'Otter':
-                    self.append(Otter())
+                    self.append([Otter()])
             else:
                 self.append([])
 
