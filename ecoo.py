@@ -54,10 +54,9 @@ class River(list):
         moves = [-1, 0, 1]
         for i in range(self.size):
             a = random.choice(moves)
-            print(a, i, "what happ: ", new_river[(i + a) % self.size], (self[i][0]))
-            new_river[(i + a) % self.size].append(self[i][0])
+            print(a, i, "what happ: ", new_river[i % self.size + a], (self[i][0]))
+            new_river[i%self.size + a].append(self[i][0])
             #print(a, new_river)
-        self = new_river
         return new_river
 
 
@@ -66,7 +65,7 @@ class River_1(River):
 
 
 class River_3(River):
-    CHOICES = [str(Bear()), str(Fish()), str(Otter()), None]
+    CHOICES = [Bear(), Fish(), Otter(), None]
 
 
 a = River_1()
