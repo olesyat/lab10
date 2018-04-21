@@ -7,7 +7,8 @@ class River1(River):
     def fight(self, animal1, animal2):
         if type(animal1) == type(animal2):
             Ecosystem.BUFFER.append(animal2)
-            Ecosystem.BUFFER.append(Bear()) if str(animal1) == 'Bear' else Ecosystem.BUFFER.append(Fish())
+            Ecosystem.BUFFER.append(Bear()) if str(
+                animal1) == 'Bear' else Ecosystem.BUFFER.append(Fish())
             return [animal1]
         else:
             return [animal1] if str(animal1) == 'Bear' else [animal2]

@@ -16,7 +16,8 @@ class Ecosystem:
 
             for i in range(len(self.river)):
                 while len(self.river[i]) > 1:
-                    self.river[i] = self.river.fight(self.river[i][0], self.river[i][1])
+                    self.river[i] = self.river.fight(self.river[i][0],
+                                                     self.river[i][1])
         print('river after fight', self.river)
         print("BUFFER", self.BUFFER)
 
@@ -24,11 +25,14 @@ class Ecosystem:
         ecosys = []
         for element in self.river:
             if element:
-                ecosys.append("'" + type(element[0]).__name__[0] + str(element[0]._power) + str(element[0]._sex) + str(element[0]._age) + "'")
+                ecosys.append("'" + type(element[0]).__name__[0] + str(
+                    element[0]._power) + str(element[0]._sex) + str(
+                    element[0]._age) + "'")
             else:
                 ecosys.append("'    '")
 
         return ' '.join(ecosys)
+
 
 class Animal:
     def __init__(self):
@@ -37,6 +41,7 @@ class Animal:
 
     def __str__(self):
         return type(self).__name__
+
 
 class Bear(Animal):
     def __init__(self):
@@ -88,8 +93,3 @@ class River(list):
             self[i] = e
 
         return self
-
-
-
-
-
