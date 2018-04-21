@@ -1,5 +1,4 @@
 import random
-import copy
 
 
 class Ecosystem:
@@ -21,12 +20,13 @@ class Animal:
 class Bear(Animal):
     KIDS = 2
 
+
 class Fish(Animal):
     KIDS = 7
 
+
 class Otter(Animal):
     KIDS = 3
-
 
 
 class River(list):
@@ -34,30 +34,24 @@ class River(list):
         self.size = random.randint(1, 10)
         self.choices = self.CHOICES
         for i in range(self.size):
-            self.append([random.choice(self.choices)])
+            animal = random.choice(self.choices)
+            if animal:
+                self.append([animal])
+            else:
+                self.append([])
 
     def move(self):
-        # new_river = copy.deepcopy(self)
-        # moves = [-1, 0, 1]
-        # print(new_river)
-        # for i in range(self.size):
-        #     a = random.choice(moves)
-        #     if len(new_river[i]) > 1:
-        #         new_river[i % self.size + a].append(new_river[i][0])
-        #     else:
-        #         new_river[i % self.size + a].append(new_river[i])
-        #     print("moving:", a, ",step", i, new_river)
-        #
-        # return new_river
         new_river = [[] for i in range(self.size)]
         print(self)
         moves = [-1, 0, 1]
         for i in range(self.size):
             a = random.choice(moves)
-            print(a, i, "what happ: ", new_river[i % self.size + a], (self[i][0]))
-            new_river[i%self.size + a].append(self[i][0])
-            #print(a, new_river)
-        return new_river
+            try:
+                new_river[(i + a) % self.size].append(self[i][0])
+            except IndexError:
+                pass
+        self = new_river
+        return self
 
 
 class River_1(River):
