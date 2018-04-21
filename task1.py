@@ -1,25 +1,16 @@
-from ecoo import River, Ecosystem
+from ecoo import River, Ecosystem, Bear, Fish
 
-
-class Bear:
-    def __str__(self):
-        return type(self).__name__
-
-
-class Fish:
-    def __str__(self):
-        return type(self).__name__
 
 class River1(River):
-    CHOICES = [str(Bear()), str(Fish()), None]
+    CHOICES = ['Bear', 'Fish', None]
 
     def fight(self, animal1, animal2):
-        if animal1 == animal2:
-            for i in range(2):
-                Ecosystem.BUFFER.append(animal2)
+        if type(animal1) == type(animal2):
+            Ecosystem.BUFFER.append(animal2)
+            Ecosystem.BUFFER.append(Bear()) if str(animal1) == 'Bear' else Ecosystem.BUFFER.append(Fish())
             return [animal1]
-        elif animal1 != animal2:
-            return [str(Bear())]
+        else:
+            return [animal1] if str(animal1) == 'Bear' else [animal2]
 
 
 a = Ecosystem(River1())

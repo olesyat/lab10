@@ -2,10 +2,10 @@ from ecoo import River, Ecosystem, Bear, Fish
 
 
 class River2(River):
-    CHOICES = [Bear(), Fish(), None]
+    CHOICES = ['Bear', 'Fish', None]
 
     def fight(self, animal1, animal2):
-        if animal1 == animal2:
+        if type(animal1) == type(animal2):
             if animal1._sex == animal2._sex:
                 return [animal1] if animal1._power > animal2._power else [animal2]
             else:

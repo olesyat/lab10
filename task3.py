@@ -24,7 +24,7 @@ class Otter(Animal):
 
 
 class River3(River):
-    CHOICES = [Bear(), Fish(), Otter(), None]
+    CHOICES = ['Bear', 'Fish', 'Otter', None]
 
     def fight(self, animal1, animal2):
         if str(animal1) == str(animal2):

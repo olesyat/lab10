@@ -26,10 +26,14 @@ class Animal:
         self._power = random.randint(1, 10)
         self._sex = random.choice([True, False])
 
-
     def __str__(self):
         return type(self).__name__
 
+class Bear(Animal):
+    pass
+
+class Fish(Animal):
+    pass
 
 class River(list):
     def __init__(self):
@@ -38,7 +42,12 @@ class River(list):
         for i in range(self.size):
             animal = random.choice(self.choices)
             if animal:
-                self.append([animal])
+                if animal == 'Bear':
+                    self.append([Bear()])
+                elif animal == 'Fish':
+                    self.append([Fish()])
+                elif animal == 'Otter':
+                    self.append(Otter())
             else:
                 self.append([])
 
