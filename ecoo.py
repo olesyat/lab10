@@ -20,6 +20,15 @@ class Ecosystem:
         print('river after fight', self.river)
         print("BUFFER", self.BUFFER)
 
+    def __str__(self):
+        ecosys = []
+        for element in self.river:
+            if element:
+                ecosys.append("'" + type(element[0]).__name__[0] + str(element[0]._power) + str(element[0]._sex) + str(element[0]._age) + "'")
+            else:
+                ecosys.append("'    '")
+
+        return ' '.join(ecosys)
 
 class Animal:
     def __init__(self):

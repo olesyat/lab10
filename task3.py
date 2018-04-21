@@ -35,4 +35,5 @@ class River3(River):
             return [animal1]
 
 a = Ecosystem(River3())
+print(a)
 a.start_stimulation()
