@@ -2,9 +2,21 @@ import random
 
 
 class Ecosystem:
+    BUFFER = []
+    SYSTEM = {'Bear': [], 'Fish': [], 'Otter': []}
+
     def __init__(self, river):
         self.river = river
 
+    def start_stimulation(self):
+        for j in range(1):
+            self.river = self.river.move()
+            print('river after move', self.river)
+
+            for i in range(len(self.river)):
+                while len(self.river[i]) > 1:
+                    self.river[i] = self.river.fight(self.river[i][0], self.river[i][1])
+        print('river after fight', self.river)
 
 
 class Animal:
@@ -16,6 +28,7 @@ class Animal:
 
     def __str__(self):
         return type(self).__name__
+
 
 class Bear(Animal):
     KIDS = 2
@@ -50,17 +63,31 @@ class River(list):
                 new_river[(i + a) % self.size].append(self[i][0])
             except IndexError:
                 pass
-        self = new_river
+
+        for i, e in enumerate(new_river):
+            self[i] = e
+
         return self
 
+    def fight(self):
+        pass
 
-class River_1(River):
+
+class River1(River):
     CHOICES = [str(Bear()), str(Fish()), None]
 
+    def fight(self, animal1, animal2):
+        if animal1 == None:
+            return [str(animal2)]
+        elif animal2 == None:
+            return [str(animal1)]
+        elif animal1 == animal2:
+            for i in range(2):
+                Ecosystem.BUFFER.append(animal2)
+            return [str(animal1)]
+        elif animal1 != animal2:
+            return [str(Bear())]
 
-class River_3(River):
-    CHOICES = [Bear(), Fish(), Otter(), None]
 
-
-a = River_1()
-print(a.move())
+a = Ecosystem(River1())
+a.start_stimulation()

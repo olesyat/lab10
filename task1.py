@@ -13,9 +13,6 @@ class Fish:
 class River1(River):
     CHOICES = [str(Bear()), str(Fish()), None]
 
-    def __init__(self):
-        super().__init__()
-
     def fight(self, animal1, animal2):
         if animal1 == None:
             return [str(animal2)]
@@ -28,3 +25,5 @@ class River1(River):
         elif animal1 != animal2:
             return [str(Bear())]
 
+a = Ecosystem(River1())
+a.start_stimulation()
