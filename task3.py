@@ -26,16 +26,8 @@ class Otter(Animal):
 class River3(River):
     CHOICES = [Bear(), Fish(), Otter(), None]
 
-    def __init__(self):
-        super().__init__()
-
     def fight(self, animal1, animal2):
-        if animal1 == None:
-            return [animal2]
-        elif animal2 == None:
-            return [animal1]
-
-        elif str(animal1) == str(animal2):
+        if str(animal1) == str(animal2):
             if animal1._sex != animal2._sex:
                 Ecosystem.BUFFER.append(animal2)
                 if str(animal2) == 'Bear':
@@ -64,5 +56,5 @@ class River3(River):
         elif str(animal1) == 'Otter' and str(animal2) == 'Fish':
             return [animal1]
 
-river = River3()
-print(river.act())
+a = Ecosystem(River3())
+a.start_stimulation()

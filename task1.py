@@ -17,7 +17,7 @@ class River1(River):
         if animal1 == animal2:
             for i in range(2):
                 Ecosystem.BUFFER.append(animal2)
-            return [str(animal1)]
+            return [animal1]
         elif animal1 != animal2:
             return [str(Bear())]
 
