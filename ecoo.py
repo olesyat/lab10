@@ -2,7 +2,6 @@ import random
 
 
 class Ecosystem:
-    '''Class to represent the ecosystem'''
     BUFFER = []
     SYSTEM = {'Bear': [], 'Fish': [], 'Otter': []}
     START_BUF = -1
@@ -11,8 +10,8 @@ class Ecosystem:
         self.river = river
 
     def start_stimulation(self):
-        '''method to do the simulation'''
         for j in range(2):
+
             print('river before', self)
             self.river = self.river.move()
 
@@ -47,7 +46,6 @@ class Ecosystem:
             pass
 
     def sixty_percent(self):
-        '''method to check the population'''
         lst = [len(self.SYSTEM['Bear']), len(self.SYSTEM['Fish']),
                len(self.SYSTEM['Otter'])]
         all = sum(lst)
@@ -85,7 +83,6 @@ class Ecosystem:
         print(self.SYSTEM)
 
     def __str__(self):
-        '''method to represent the ecosystem'''
         ecosys = []
         for element in self.river:
             if element:
@@ -99,8 +96,6 @@ class Ecosystem:
 
 
 class Animal:
-    '''The parent class for all the animals in ecosystem'''
-
     def __init__(self):
         self._power = random.randint(1, 10)
         self._sex = random.choice([True, False])
@@ -110,8 +105,6 @@ class Animal:
 
 
 class Bear(Animal):
-    '''The class to represent a Bear'''
-
     def __init__(self):
         super().__init__()
         self._age = random.randint(1, 10)
@@ -119,8 +112,6 @@ class Bear(Animal):
 
 
 class Fish(Animal):
-    '''The class to represent a Fish'''
-
     def __init__(self):
         super().__init__()
         self._age = random.randint(1, 5)
@@ -128,8 +119,6 @@ class Fish(Animal):
 
 
 class Otter(Animal):
-    '''The class to represent an Otter'''
-
     def __init__(self):
         super().__init__()
         self._age = random.randint(1, 12)
@@ -137,8 +126,6 @@ class Otter(Animal):
 
 
 class River(list):
-    '''The class to represent a River'''
-
     def __init__(self):
         self.size = random.randint(1, 10)
         self.choices = self.CHOICES
@@ -161,7 +148,6 @@ class River(list):
                 self.append([])
 
     def move(self):
-        '''method to move the animals'''
         new_river = [[] for i in range(self.size)]
         moves = [-1, 0, 1]
         for i in range(self.size):
