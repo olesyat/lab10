@@ -86,7 +86,7 @@ class Ecosystem:
         for element in self.river:
             if element:
                 for i in range(len(element)):
-                    ecosys.append("'" + type(element[i]).__name__[i] + str(
+                    ecosys.append("'" + type(element[i]).__name__[0] + str(
                         element[i]._power) + str(element[i]._sex) + str(
                         element[i]._age) + "'")
 
