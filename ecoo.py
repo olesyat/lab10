@@ -11,21 +11,23 @@ class Ecosystem:
 
     def start_stimulation(self):
         print('river before', self.river)
-        for j in range(1):  # тут має бути рандомне число, але 1 для тестування
+        for j in range(2):  # тут має бути рандомне число, але 1 для тестування
             self.river = self.river.move()
             print('river after move', self.river)
 
             for i in range(len(self.river)):
+
                 if not len(self.river[i]):
-                    self.buffer_to_river()
+                    self.buffer_to_river(i)
 
                 while len(self.river[i]) > 1:
+
                     self.river[i] = self.river.fight(self.river[i][0],
                                                      self.river[i][1])
 
             for i in range(Ecosystem.START_BUF):
                 if not len(self.river[1]):
-                    self.buffer_to_river()
+                    self.buffer_to_river(i)
 
             Ecosystem.START_BUF = -1
             if len(Ecosystem.BUFFER):
@@ -33,13 +35,11 @@ class Ecosystem:
 
             print('river after fight', self.river)
             print("BUFFER", self.BUFFER)
-            self.sixty_percent()
 
-
-    def buffer_to_river(self):
+    def buffer_to_river(self, i):
         try:
             new = Ecosystem.BUFFER.pop()
-            self.river.append(new)
+            self.river[i] = new
             if Ecosystem.START_BUF == -1:
                 Ecosystem.START_BUF = i
         except IndexError:
