@@ -10,20 +10,19 @@ class Ecosystem:
         self.river = river
 
     def start_stimulation(self):
-        for j in range(2):
-
+        for j in range(random.randint(1, 10)):
             print('river before', self)
             self.river = self.river.move()
-
             print('river after move', self)
-
             for i in range(len(self.river)):
                 if not len(self.river[i]):
                     self.buffer_to_river(i)
-
+            try:
                 while len(self.river[i]) > 1:
                     self.river[i] = self.river.fight(self.river[i][0],
                                                      self.river[i][1])
+            except TypeError:
+                pass
 
             for i in range(Ecosystem.START_BUF):
                 if not len(self.river[1]):
@@ -34,7 +33,7 @@ class Ecosystem:
                 Ecosystem.BUFFER.clear()
 
             print('river after fight', self)
-            print("BUFFER", self.BUFFER)
+            print()
 
     def buffer_to_river(self, i):
         try:

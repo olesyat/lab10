@@ -50,5 +50,4 @@ class River3(River):
 
 
 a = Ecosystem(River3())
-print(a)
 a.start_stimulation()
