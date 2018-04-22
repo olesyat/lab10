@@ -2,6 +2,7 @@ from ecoo import River, Ecosystem, Bear, Fish, Otter
 
 
 class River3(River):
+    '''The subclass of class River'''
     CHOICES = ['Bear', 'Fish', 'Otter', None]
 
     def fight(self, animal1, animal2):
