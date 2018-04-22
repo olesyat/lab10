@@ -10,15 +10,14 @@ class Ecosystem:
 
     def start_stimulation(self):
         print('river before', self.river)
-        for j in range(1): # тут має бути рандомне число, але 1 для тестування
+        for j in range(2): # тут має бути рандомне число, але 1 для тестування
             self.river = self.river.move()
             print('river after move', self.river)
-
             for i in range(len(self.river)):
                 while len(self.river[i]) > 1:
                     self.river[i] = self.river.fight(self.river[i][0],
                                                      self.river[i][1])
-        print('river after fight', self.river)
+            print('river after fight', self.river)
         print("BUFFER", self.BUFFER)
 
     def __str__(self):
