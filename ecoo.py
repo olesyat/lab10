@@ -33,7 +33,8 @@ class Ecosystem:
 
             print('river after fight', self.river)
             print("BUFFER", self.BUFFER)
-            print(self.sixty_percent())
+            (self.sixty_percent())
+
 
     def buffer_to_river(self):
         try:
@@ -45,16 +46,38 @@ class Ecosystem:
             pass
 
     def sixty_percent(self):
-        bear = len(self.SYSTEM['Bear'])
-        fish = len(self.SYSTEM['Otter'])
-        otter = len(self.SYSTEM['Fish'])
-        all = bear + fish + otter
-        max_ = max([bear, fish, otter])
-        if max_ >= all * 0.6:
-            pass
+        lst = [len(self.SYSTEM['Bear']), len(self.SYSTEM['Fish']), len(self.SYSTEM['Otter'])]
+        all = sum(lst)
+        max_ = max(lst)
+        max_1 = ['Bear', 'Fish', 'Otter']
+        i = 0
+        while max_ > all * 0.6:
+            print("!!!!")
+            print(self.SYSTEM)
+            new = self.SYSTEM[max_1[lst.index(max_)]]
+            ages = [element._age for element in new]
+            if i%2 == 0:
+                remove_ = max(ages)
+            else:
+                remove_ = min(ages)
+
+            lets_kill = new[ages.index(remove_)]
+            new.remove(lets_kill)
+            self.SYSTEM[max_1[lst.index(max_)]] = new
+
+            # removing from river
+
+            for el in self.river:
+                if el:
+                    if el[0] is lets_kill:
+                        el = []
+            i += 1
+            lst = [len(self.SYSTEM['Bear']), len(self.SYSTEM['Fish']), len(self.SYSTEM['Otter'])]
+            all = sum(lst)
+            max_ = max(lst)
         else:
             pass
-        return all
+        print(self.SYSTEM)
 
     def __str__(self):
         ecosys = []
