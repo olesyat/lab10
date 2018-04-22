@@ -33,6 +33,7 @@ class Ecosystem:
 
             print('river after fight', self.river)
             print("BUFFER", self.BUFFER)
+            print(self.sixty_percent())
 
     def buffer_to_river(self):
         try:
@@ -44,7 +45,15 @@ class Ecosystem:
             pass
 
     def sixty_percent(self):
-        pass
+        bear = len(self.SYSTEM['Bear'])
+        fish = len(self.SYSTEM['Otter'])
+        otter = len(self.SYSTEM['Fish'])
+        all = bear + fish + otter
+        max_ = max([bear, fish, otter])
+        if max_ >= all * 0.6:
+            pass
+        else:
+            pass
 
     def __str__(self):
         ecosys = []
@@ -97,11 +106,17 @@ class River(list):
             animal = random.choice(self.choices)
             if animal:
                 if animal == 'Bear':
-                    self.append([Bear()])
+                    animal_choice = Bear()
+                    Ecosystem.SYSTEM[str(animal_choice)].append(animal_choice)
+                    self.append([animal_choice])
                 elif animal == 'Fish':
-                    self.append([Fish()])
+                    animal_choice = Fish()
+                    Ecosystem.SYSTEM[str(animal_choice)].append(animal_choice)
+                    self.append([animal_choice])
                 elif animal == 'Otter':
-                    self.append([Otter()])
+                    animal_choice = Otter()
+                    Ecosystem.SYSTEM[str(animal_choice)].append(animal_choice)
+                    self.append([animal_choice])
             else:
                 self.append([])
 
