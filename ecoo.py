@@ -33,7 +33,7 @@ class Ecosystem:
 
             print('river after fight', self.river)
             print("BUFFER", self.BUFFER)
-            (self.sixty_percent())
+            self.sixty_percent()
 
 
     def buffer_to_river(self):
@@ -52,7 +52,7 @@ class Ecosystem:
         max_1 = ['Bear', 'Fish', 'Otter']
         i = 0
         while max_ > all * 0.6:
-            print("!!!!")
+            print("ПЕРЕНАСЕЛЕННЯ")
             print(self.SYSTEM)
             new = self.SYSTEM[max_1[lst.index(max_)]]
             ages = [element._age for element in new]
@@ -75,9 +75,11 @@ class Ecosystem:
             lst = [len(self.SYSTEM['Bear']), len(self.SYSTEM['Fish']), len(self.SYSTEM['Otter'])]
             all = sum(lst)
             max_ = max(lst)
+            print("Natural selection killing ", lets_kill)
         else:
             pass
         print(self.SYSTEM)
+
 
     def __str__(self):
         ecosys = []
