@@ -4,82 +4,22 @@ import random
 class Ecosystem:
     BUFFER = []
     SYSTEM = {'Bear': [], 'Fish': [], 'Otter': []}
-    START_BUF = -1
 
     def __init__(self, river):
         self.river = river
 
     def start_stimulation(self):
-        print('river before', self.river)
-        for j in range(1):  # тут має бути рандомне число, але 1 для тестування
+        for j in range(1):
+            print('river before', self.river)
             self.river = self.river.move()
             print('river after move', self.river)
 
             for i in range(len(self.river)):
-                if not len(self.river[i]):
-                    self.buffer_to_river()
-
                 while len(self.river[i]) > 1:
                     self.river[i] = self.river.fight(self.river[i][0],
                                                      self.river[i][1])
-
-            for i in range(Ecosystem.START_BUF):
-                if not len(self.river[1]):
-                    self.buffer_to_river()
-
-            Ecosystem.START_BUF = -1
-            if len(Ecosystem.BUFFER):
-                Ecosystem.BUFFER.clear()
-
-            print('river after fight', self.river)
-            print("BUFFER", self.BUFFER)
-            self.sixty_percent()
-
-
-    def buffer_to_river(self):
-        try:
-            new = Ecosystem.BUFFER.pop()
-            self.river.append(new)
-            if Ecosystem.START_BUF == -1:
-                Ecosystem.START_BUF = i
-        except IndexError:
-            pass
-
-    def sixty_percent(self):
-        lst = [len(self.SYSTEM['Bear']), len(self.SYSTEM['Fish']), len(self.SYSTEM['Otter'])]
-        all = sum(lst)
-        max_ = max(lst)
-        max_1 = ['Bear', 'Fish', 'Otter']
-        i = 0
-        while max_ > all * 0.6:
-            print("ПЕРЕНАСЕЛЕННЯ")
-            print(self.SYSTEM)
-            new = self.SYSTEM[max_1[lst.index(max_)]]
-            ages = [element._age for element in new]
-            if i%2 == 0:
-                remove_ = max(ages)
-            else:
-                remove_ = min(ages)
-
-            lets_kill = new[ages.index(remove_)]
-            new.remove(lets_kill)
-            self.SYSTEM[max_1[lst.index(max_)]] = new
-
-            # removing from river
-
-            for el in self.river:
-                if el:
-                    if el[0] is lets_kill:
-                        el = []
-            i += 1
-            lst = [len(self.SYSTEM['Bear']), len(self.SYSTEM['Fish']), len(self.SYSTEM['Otter'])]
-            all = sum(lst)
-            max_ = max(lst)
-            print("Natural selection killing ", lets_kill)
-        else:
-            pass
-        print(self.SYSTEM)
-
+        print('river after fight', self.river)
+        print("BUFFER", self.BUFFER)
 
     def __str__(self):
         ecosys = []
@@ -132,17 +72,11 @@ class River(list):
             animal = random.choice(self.choices)
             if animal:
                 if animal == 'Bear':
-                    animal_choice = Bear()
-                    Ecosystem.SYSTEM[str(animal_choice)].append(animal_choice)
-                    self.append([animal_choice])
+                    self.append([Bear()])
                 elif animal == 'Fish':
-                    animal_choice = Fish()
-                    Ecosystem.SYSTEM[str(animal_choice)].append(animal_choice)
-                    self.append([animal_choice])
+                    self.append([Fish()])
                 elif animal == 'Otter':
-                    animal_choice = Otter()
-                    Ecosystem.SYSTEM[str(animal_choice)].append(animal_choice)
-                    self.append([animal_choice])
+                    self.append([Otter()])
             else:
                 self.append([])
 
