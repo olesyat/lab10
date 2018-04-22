@@ -16,3 +16,4 @@ class River1(River):
 
 a = Ecosystem(River1())
 a.start_stimulation()
+print(a)
