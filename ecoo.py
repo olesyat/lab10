@@ -85,14 +85,15 @@ class Ecosystem:
         ecosys = []
         for element in self.river:
             if element:
-                ecosys.append("'" + type(element[0]).__name__[0] + str(
-                    element[0]._power) + str(element[0]._sex) + str(
-                    element[0]._age) + "'")
+                for i in range(len(element)):
+                    ecosys.append("'" + type(element[i]).__name__[i] + str(
+                        element[i]._power) + str(element[i]._sex) + str(
+                        element[i]._age) + "'")
+
             else:
                 ecosys.append("'    '")
 
         return ' '.join(ecosys)
-
 
 class Animal:
     def __init__(self):
