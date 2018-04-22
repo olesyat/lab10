@@ -11,9 +11,11 @@ class Ecosystem:
 
     def start_stimulation(self):
         for j in range(2):
-            print('river before', self.river)
+
+            print('river before', self)
             self.river = self.river.move()
-            print('river after move', self.river)
+
+            print('river after move', self)
 
             for i in range(len(self.river)):
                 if not len(self.river[i]):
@@ -31,7 +33,7 @@ class Ecosystem:
             if len(Ecosystem.BUFFER):
                 Ecosystem.BUFFER.clear()
 
-            print('river after fight', self.river)
+            print('river after fight', self)
             print("BUFFER", self.BUFFER)
 
     def buffer_to_river(self, i):
