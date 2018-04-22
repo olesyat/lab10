@@ -39,7 +39,7 @@ class Ecosystem:
     def buffer_to_river(self, i):
         try:
             new = Ecosystem.BUFFER.pop()
-            self.river[i] = new
+            self.river[i] = [new]
             if Ecosystem.START_BUF == -1:
                 Ecosystem.START_BUF = i
         except IndexError:
