@@ -48,6 +48,7 @@ class River3(River):
             Ecosystem.SYSTEM[str(animal2)].remove(animal2)
             return [animal1]
 
+
 a = Ecosystem(River3())
 print(a)
 a.start_stimulation()

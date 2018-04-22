@@ -16,12 +16,10 @@ class Ecosystem:
             print('river after move', self.river)
 
             for i in range(len(self.river)):
-
                 if not len(self.river[i]):
                     self.buffer_to_river(i)
 
                 while len(self.river[i]) > 1:
-
                     self.river[i] = self.river.fight(self.river[i][0],
                                                      self.river[i][1])
 
@@ -46,7 +44,8 @@ class Ecosystem:
             pass
 
     def sixty_percent(self):
-        lst = [len(self.SYSTEM['Bear']), len(self.SYSTEM['Fish']), len(self.SYSTEM['Otter'])]
+        lst = [len(self.SYSTEM['Bear']), len(self.SYSTEM['Fish']),
+               len(self.SYSTEM['Otter'])]
         all = sum(lst)
         max_ = max(lst)
         max_1 = ['Bear', 'Fish', 'Otter']
@@ -56,7 +55,7 @@ class Ecosystem:
             print(self.SYSTEM)
             new = self.SYSTEM[max_1[lst.index(max_)]]
             ages = [element._age for element in new]
-            if i%2 == 0:
+            if i % 2 == 0:
                 remove_ = max(ages)
             else:
                 remove_ = min(ages)
@@ -72,14 +71,14 @@ class Ecosystem:
                     if el[0] is lets_kill:
                         el = []
             i += 1
-            lst = [len(self.SYSTEM['Bear']), len(self.SYSTEM['Fish']), len(self.SYSTEM['Otter'])]
+            lst = [len(self.SYSTEM['Bear']), len(self.SYSTEM['Fish']),
+                   len(self.SYSTEM['Otter'])]
             all = sum(lst)
             max_ = max(lst)
             print("Natural selection killing ", lets_kill)
         else:
             pass
         print(self.SYSTEM)
-
 
     def __str__(self):
         ecosys = []
