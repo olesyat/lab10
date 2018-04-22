@@ -10,8 +10,8 @@ class Ecosystem:
         self.river = river
 
     def start_stimulation(self):
-        print('river before', self.river)
-        for j in range(2):  # тут має бути рандомне число, але 1 для тестування
+        for j in range(2):
+            print('river before', self.river)
             self.river = self.river.move()
             print('river after move', self.river)
 
